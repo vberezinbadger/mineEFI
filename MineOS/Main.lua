@@ -116,7 +116,7 @@ container:addChild(GUI.roundedButton(18, 15, 15, 1, 0xE1E1E1, 0x696969, 0x878787
 
         local downloading = flashContainer:addChild(GUI.text(centrizeText(container.width, localization.downloading), 8, 0x878787, localization.downloading))
         workspace:draw()
-        local data, reason = internet.request("https://github.com/BrightYC/Cyan/blob/master/stuff/cyan.bin?raw=true")
+        local data, reason = internet.request("https://github.com/vberezinbadger/mineEFI/blob/master/stuff/mineefi.bin?raw=true")
         downloading:remove()
 
         if data then
@@ -126,7 +126,7 @@ container:addChild(GUI.roundedButton(18, 15, 15, 1, 0xE1E1E1, 0x696969, 0x878787
             local success, reason, reasonFromEeprom = pcall(eeprom.set, data)
 
             if success and not reasonFromEeprom then
-                eeprom.setLabel("Cyan BIOS")
+                eeprom.setLabel("mineEFI")
                 eeprom.setData(require("filesystem").getProxy().address)
                 if readonly.state then
                     eeprom.makeReadonly(eeprom.getChecksum())
